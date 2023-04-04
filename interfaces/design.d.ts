@@ -8,7 +8,7 @@ export interface BaseLayerProps {
   y: number;
   width: number;
   height: number;
-  rorate: number;
+  rotate: number;
 }
 
 export interface ImageLayerProps extends BaseLayerProps {

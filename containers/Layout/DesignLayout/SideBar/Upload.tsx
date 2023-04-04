@@ -3,6 +3,9 @@ import { useState } from "react";
 import CustomDropzone from "../../../../components/CustomDropzone";
 import { useUploadForm } from "../../../../hooks/useUploadFileProgress";
 import { randID } from "../../../../utils";
+import { useDispatch } from "react-redux";
+import { addLayer } from "../../../../redux/reducers/design";
+import { LayerType } from "../../../../contants/design";
 
 interface IImages {
   id: string;
@@ -13,6 +16,7 @@ const Upload = () => {
   const [images, setImages] = useState<IImages[]>([]);
   const [loading, setLoading] = useState(false);
   const { uploadForm, progress } = useUploadForm("/api/upload");
+  const dispatch = useDispatch();
 
   const handleUploadImage = async (acceptedFiles: File[]) => {
     try {
@@ -35,8 +39,24 @@ const Upload = () => {
     } catch (error) {}
   };
 
+  const handleAddImage = (image: IImages) => {
+    const id = randID();
+    dispatch(
+      addLayer({
+        id: id,
+        type: LayerType.IMAGE,
+        x: 300,
+        y: 300,
+        width: 300,
+        height: 300,
+        url: image.url,
+        rotate: 0,
+      })
+    );
+  };
+
   return (
-    <div className="h-full flex flex-col justify-start items-center mx-4 px-4 overflow-scroll w-full">
+    <div className="h-full flex flex-col justify-start items-center overflow-hidden mx-4 px-4">
       <CustomDropzone
         onChange={handleUploadImage}
         acceptType="image/*"
@@ -45,7 +65,7 @@ const Upload = () => {
         progress={progress}
       />
 
-      <div className="w-full h-full m-auto mt-6 text-center">
+      <div className="w-full h-full m-auto mt-6 text-center overflow-auto">
         {images.length ? (
           <div className="flex flex-wrap justify-between gap-4 ">
             {images.map((item) => {
@@ -53,6 +73,7 @@ const Upload = () => {
                 <div
                   className="flex items-center justify-center relative w-24 h-24 cursor-pointer"
                   key={item.id}
+                  onClick={() => handleAddImage(item)}
                 >
                   <Image
                     src={item.url}

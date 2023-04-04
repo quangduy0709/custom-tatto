@@ -81,10 +81,9 @@ handler.put(async (req: NextApiRequest, res: NextApiResponse) => {
     /** File type casting */
     const file = formData.files.file as formidable.File;
 
-    const url = await uploadImageThumb(file);
-
-    return res.status(201).json(url);
-  } catch (error) {
+    const data = await uploadImageThumb(file);
+    return res.status(201).json(data);
+  } catch (error: any) {
     res.status(400).send({
       message: "Failed to upload image",
     });

@@ -5,6 +5,7 @@ import { IoImagesOutline } from "react-icons/io5";
 import { MdOutlineUploadFile } from "react-icons/md";
 import { RxText } from "react-icons/rx";
 import Upload from "./Upload";
+import TextSection from "../../../DesignTool/TextSection";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -52,7 +53,7 @@ const Sidebar = () => {
       case "upload":
         return <Upload />;
       case "text":
-        return <></>;
+        return <TextSection />;
       case "layers":
         return <></>;
       default:
@@ -107,7 +108,7 @@ const ButtonCloseDrawer = ({
     <div
       className={`${
         open
-          ? "absolute top-1/2 -translate-y-1/2 -right-4 cursor-pointer"
+          ? "absolute top-1/2 -translate-y-1/2 -right-4 cursor-pointer z-[999]"
           : "invisible"
       }`}
       onClick={onClick}

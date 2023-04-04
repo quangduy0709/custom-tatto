@@ -4,7 +4,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Header = () => {
   return (
-    <header id="header" className="sticky top-0 z-10 w-full shadow-xl">
+    <header id="header" className="sticky top-0 z-[900] w-full shadow-xl">
       <div>
         <nav className=" flex flex-wrap flex-col md:flex-row bg-white text-black z-30 relative items-center">
           <div className="md:shadow-none flex items-center justify-between md:justify-start px-2 py-4 sm:p-4 md:pr-0">

@@ -9,18 +9,7 @@ interface DesignProps {
 
 const initialState: DesignProps = {
   selected: [],
-  layers: [
-    {
-      id: "12312",
-      type: LayerType.IMAGE,
-      x: 300,
-      y: 300,
-      width: 500,
-      height: 500,
-      url: "https://static.vecteezy.com/system/resources/previews/006/325/639/original/dog-cartoon-colored-clipart-illustration-free-vector.jpg",
-      rotate: 0,
-    },
-  ],
+  layers: [],
 };
 
 const slicer = createSlice({

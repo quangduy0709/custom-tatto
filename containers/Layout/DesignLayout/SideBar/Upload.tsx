@@ -10,7 +10,11 @@ import { LayerType } from "../../../../contants/design";
 interface IImages {
   id: string;
   url: string;
+  width: number;
+  height: number;
 }
+
+type IThumb = Omit<IImages, "id">;
 
 const Upload = () => {
   const [images, setImages] = useState<IImages[]>([]);
@@ -27,11 +31,23 @@ const Upload = () => {
         formData.append("file", file as File);
       }
       if (acceptedFiles.length === 1) {
-        const data = await uploadForm(formData, "put");
-        result = [{ id: randID(), url: data }];
+        const data: IThumb = await uploadForm(formData, "put");
+        result = [
+          {
+            id: randID(),
+            url: data.url,
+            height: data.height,
+            width: data.width,
+          },
+        ];
       } else {
-        const data = await uploadForm(formData, "post");
-        result = data.map((url: string) => ({ url, id: randID() }));
+        const data: IThumb[] = await uploadForm(formData, "post");
+        result = data.map((item) => ({
+          id: randID(),
+          url: item.url,
+          height: item.height,
+          width: item.width,
+        }));
       }
 
       setImages((prev) => [...prev, ...result]);
@@ -47,8 +63,8 @@ const Upload = () => {
         type: LayerType.IMAGE,
         x: 300,
         y: 300,
-        width: 300,
-        height: 300,
+        width: image.width,
+        height: image.height,
         url: image.url,
         rotate: 0,
       })
@@ -71,15 +87,15 @@ const Upload = () => {
             {images.map((item) => {
               return (
                 <div
-                  className="flex items-center justify-center relative w-24 h-24 cursor-pointer"
+                  className="h-24 w-24 border flex justify-center items-center rounded-sm relative"
                   key={item.id}
                   onClick={() => handleAddImage(item)}
                 >
                   <Image
                     src={item.url}
+                    className={`object-cover cursor-pointer`}
                     fill
-                    className="absolute object-cover"
-                    alt="images"
+                    alt="thumbnail"
                   />
                 </div>
               );

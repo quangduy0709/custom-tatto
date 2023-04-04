@@ -61,7 +61,7 @@ const Sidebar = () => {
   }, [choice]);
 
   return (
-    <div className="dl-sidebar h-screen flex">
+    <div className="dl-sidebar h-full flex">
       <div className="dl-sidebar-tabs bg-[#212121] h-full">
         <div className="flex flex-col text-sm text-white font-semibold justify-center items-center">
           {sideBarMenu.map((item) => {
@@ -83,7 +83,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div
-        className={`dl-sidebar-drawer flex-1 shadow-xl z-0 relative  bg-white transition-all ${
+        className={`dl-sidebar-drawer flex-1 shadow-xl z-50 relative  bg-white transition-all ${
           open ? "w-[300px]" : "w-0"
         }`}
       >

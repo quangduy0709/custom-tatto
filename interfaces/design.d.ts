@@ -1,6 +1,6 @@
 import { LayerType } from "../contants/design";
 
-export type LayerProps = ImageLayerProps;
+export type LayerProps = ImageLayerProps | TextLayerProps;
 
 export interface BaseLayerProps {
   id: string;

@@ -1,6 +1,6 @@
 import { LayerType } from "../contants/design";
 
-export type LayerProps = ImageLayerProps;
+export type LayerProps = ImageLayerProps | TextLayerProps;
 
 export interface BaseLayerProps {
   id: string;
@@ -8,7 +8,7 @@ export interface BaseLayerProps {
   y: number;
   width: number;
   height: number;
-  rorate: number;
+  rotate: number;
 }
 
 export interface ImageLayerProps extends BaseLayerProps {

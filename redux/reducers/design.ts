@@ -18,7 +18,7 @@ const initialState: DesignProps = {
       width: 500,
       height: 500,
       url: "https://static.vecteezy.com/system/resources/previews/006/325/639/original/dog-cartoon-colored-clipart-illustration-free-vector.jpg",
-      rorate: 0,
+      rotate: 0,
     },
   ],
 };
@@ -31,7 +31,11 @@ const slicer = createSlice({
       state.selected = [action.payload];
       return state;
     },
+    addLayer(state, action: PayloadAction<LayerProps>) {
+      state.layers.push(action.payload);
+      return state;
+    },
   },
 });
-export const { selectLayer } = slicer.actions;
+export const { selectLayer, addLayer } = slicer.actions;
 export default slicer.reducer;

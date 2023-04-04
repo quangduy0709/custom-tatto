@@ -1,5 +1,5 @@
 import Content from "./Content";
-import Sidebar from "./Sidebar";
+import Sidebar from "./SideBar";
 
 const DesignLayout = () => {
   return (

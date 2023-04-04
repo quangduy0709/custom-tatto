@@ -1,5 +1,5 @@
 import ContentBar from "./ContentBar";
-import DesignArea from "./DesignArea";
+import DesignArea from "../../DesignArea";
 
 const Content = () => {
   return (

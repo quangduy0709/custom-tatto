@@ -1,0 +1,34 @@
+.moveable-rotation-line {
+  display: none !important;
+}
+
+.moveable-dragging {
+  opacity: 0.2;
+}
+
+.moveable-rotation-control {
+  width: 30px !important;
+  height: 30px !important;
+  background-repeat: no-repeat !important;
+  border: none !important;
+  background: #fff;
+  background-image: url("/icons/rotate.svg") !important;
+  background-position: center !important;
+  padding: 5px !important;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  cursor: alias;
+  margin-left: -14px !important;
+}
+
+.moveable-resizable.moveable-control {
+  background: #c8133e !important;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.moveable-line {
+  height: 4px !important;
+  background: white !important;
+  border: 1px solid #ccc;
+  display: block !important;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}

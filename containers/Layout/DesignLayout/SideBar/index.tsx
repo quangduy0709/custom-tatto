@@ -76,7 +76,7 @@ const Sidebar = () => {
                 onClick={() => openDrawer(item.key)}
                 key={item.key}
               >
-                <item.icon className="w-5 h-5" />
+                <item.icon className="w-4 h-4" />
                 {item.label}
               </div>
             );

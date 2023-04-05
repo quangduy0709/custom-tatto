@@ -54,15 +54,6 @@ const Header = () => {
               <button className="mr-0 md:mr-6 px-4 py-2 md:px-6 btn border-transparent border border-solid md:border-black font-bold rounded-md">
                 Preview
               </button>
-
-              <button className="mr-0 md:mr-6 px-4 md:px-6 py-2 bg-black text-white text-sm border border-solid border-black shadow-none font-bold rounded-md">
-                Add to Cart
-              </button>
-              <div className="hidden md:flex">
-                <div className="relative p-1 cursor-pointer hover:text-gray-400 ">
-                  <AiOutlineShoppingCart className="w-6 h-6" />
-                </div>
-              </div>
             </div>
           </div>
         </nav>

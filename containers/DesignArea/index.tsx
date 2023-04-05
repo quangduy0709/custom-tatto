@@ -8,7 +8,7 @@ import TextLayer from "./TextLayer";
 const DesignArea = () => {
   const design = useSelector((state: RootState) => state.design);
   return (
-    <div className="w-[850px] h-[850px] bg-white relative">
+    <div className="w-[850px] h-[850px] bg-white relative" id="design-content">
       <Handler />
 
       {design.layers.map((layer) =>

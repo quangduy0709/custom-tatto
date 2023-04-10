@@ -60,13 +60,17 @@ const Sidebar = () => {
   return (
     <div className="w-full md:w-auto flex flex-col md:flex-row-reverse absolute md:relative z-10">
       <div
-        className={`dl-sidebar-drawer flex-1 shadow-xl z-50 md:bg-white bg-gray-400 transition-all flex-col md:flex-row ${
-          open ? " w-full md:w-[300px]" : "w-0  sr-only"
-        }`}
+        className={`dl-sidebar-drawer flex-1 shadow-xl z-50 md:bg-white bg-gray-400`}
       >
         {open && <ButtonCloseDrawer onClick={() => setOpen(false)} />}
 
-        <div className="content">{renderContent}</div>
+        <div
+          className={`content overflow-hidden transition-all duration-300 ${
+            open ? "md:w-[300px] h-[300px] " : "w-0 h-0"
+          }`}
+        >
+          {renderContent}
+        </div>
       </div>
 
       <div className="w-full md:w-auto overflow-hidden relative z-50 bg-[#212121]  text-white">

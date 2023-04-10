@@ -15,7 +15,6 @@ const handler = nc({
 handler.post(async (req, res) => {
   try {
     const body = req.body;
-    console.log("🚀 ~ file: test.ts:18 ~ handler.post ~ body:", body);
 
     const browser = await puppeteer.launch({
       headless: true,
@@ -43,7 +42,7 @@ handler.post(async (req, res) => {
     console.log("🚀 ~ file: design.ts:48 ~ handler.post ~ url:", url);
 
     return res.status(201).json("url");
-  } catch (error) {
+  } catch (error: any) {
     console.log(error.message);
   }
 });

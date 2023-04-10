@@ -1,15 +1,15 @@
 import { useSelector } from "react-redux";
-import { LayerType } from "../../contants/design";
 import { RootState } from "../../redux";
 import Handler from "./Handler";
 import ImageLayer from "./ImageLayer";
 import TextLayer from "./TextLayer";
+import { LayerType } from "../../constants/design";
 
 const DesignArea = () => {
   const design = useSelector((state: RootState) => state.design);
   return (
     <div
-      className="max-w-[750px] max-h-[700px] bg-white relative w-full h-full mx-6"
+      className="max-w-[750px] max-h-[500px] md:max-h-[700px] bg-white relative w-full h-full mx-6"
       id="design-content"
     >
       <Handler />

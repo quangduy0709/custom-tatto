@@ -33,7 +33,7 @@ export interface FormidableParseResult {
 
 // Url used in functions must start without "/"
 const storage = {
-  upload: async (file: File, url: string) => {
+  upload: async (file: File | Buffer, url: string) => {
     try {
       const { $metadata } = await client.send(
         new PutObjectCommand({ Bucket: bucket, Key: url, Body: file })

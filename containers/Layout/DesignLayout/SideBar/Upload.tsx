@@ -5,7 +5,7 @@ import { useUploadForm } from "../../../../hooks/useUploadFileProgress";
 import { randID } from "../../../../utils";
 import { useDispatch } from "react-redux";
 import { addLayer } from "../../../../redux/reducers/design";
-import { LayerType } from "../../../../contants/design";
+import { LayerType } from "../../../../constants/design";
 
 interface IImages {
   id: string;

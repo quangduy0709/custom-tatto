@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LayerType } from "../../contants/design";
 import { LayerProps } from "../../interfaces/design";
 
 interface DesignProps {

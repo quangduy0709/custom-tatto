@@ -16,10 +16,6 @@ const Sidebar = () => {
     setChoice(value);
   };
 
-  const closeDrawer = () => {
-    setOpen(false);
-  };
-
   //dainh will code this
   const onZoom = () => {};
 
@@ -68,15 +64,13 @@ const Sidebar = () => {
           open ? " w-full md:w-[300px]" : "w-0  sr-only"
         }`}
       >
-        {open && (
-          <ButtonCloseDrawer onClick={() => setOpen(false)} open={open} />
-        )}
+        {open && <ButtonCloseDrawer onClick={() => setOpen(false)} />}
 
         <div className="content">{renderContent}</div>
       </div>
 
       <div className="w-full md:w-auto overflow-hidden relative z-50 bg-[#212121]  text-white">
-        <div className="inner w-full md:w-20 max-w-md h-full m-auto relative flex flex-row md:flex-col items-center text-xs font-bold p-0 md:pb-6 gap-7 justify-center md:justify-start">
+        <div className="w-full md:w-20 max-w-md h-full m-auto relative flex flex-row md:flex-col items-center text-xs font-bold p-0 md:pb-6 gap-7 justify-center md:justify-start">
           {sideBarMenu.map((item) => {
             return (
               <div
@@ -101,23 +95,13 @@ const Sidebar = () => {
 
 export default Sidebar;
 
-const ButtonCloseDrawer = ({
-  open,
-  onClick,
-}: {
-  open: boolean;
-  onClick: () => void;
-}) => {
+const ButtonCloseDrawer = ({ onClick }: { onClick: () => void }) => {
   return (
     <div
-      className={`${
-        open
-          ? "flex items-center justify-center md:absolute md:top-1/2 md:-translate-y-1/2 md:-right-[20px] cursor-pointer z-[999]"
-          : "invisible"
-      }`}
+      className="flex items-center justify-center md:absolute md:top-1/2 md:-translate-y-1/2 md:-right-[20px] cursor-pointer z-[999]"
       onClick={onClick}
     >
-      <div className="relative sr-only md:block md:h-full md:w-full">
+      <div className="relative hidden md:block">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"

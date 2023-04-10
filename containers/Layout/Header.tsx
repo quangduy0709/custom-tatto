@@ -1,8 +1,16 @@
-import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import req from "../../libs/req";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux";
+import { processHtmlDesign } from "../../libs/design";
+import axios from "axios";
 
 const Header = () => {
+  const { layers } = useSelector((state: RootState) => state.design);
+  const handleOnClick = async () => {
+    const html = processHtmlDesign(layers);
+    const { data } = await req.post("/test", JSON.stringify(html[0].html));
+  };
   return (
     <header id="header" className="sticky top-0 z-[900] w-full shadow-xl">
       <div>
@@ -17,7 +25,7 @@ const Header = () => {
               <a
                 id="logo"
                 href="/"
-                className=" m-auto py-1 flex-1 h-full flex items-center text-black"
+                className=" m-auto py-1 flex-1 h-full flex items-center text-black max-w-[150px] md:max-w-none"
               >
                 <svg
                   aria-labelledby="LOGO_DESC_ID"
@@ -33,7 +41,7 @@ const Header = () => {
               </a>
             </div>
           </div>
-          <div className="relative flex-1">
+          <div className="relative flex-1 hidden md:block">
             <div className="pl-2 md:p-4 flex items-center justify-start md:justify-between p-2 overflow-hidden">
               <div className="flex flex-1 justify-end md:justify-start items-center">
                 <div className="ml-5 mr-9 hidden md:flex relative items-center cursor-pointer">
@@ -51,7 +59,10 @@ const Header = () => {
                   <span className="hidden lg:block">Size: 4x4 inches</span>
                 </button>
               </div>
-              <button className="mr-0 md:mr-6 px-4 py-2 md:px-6 btn border-transparent border border-solid md:border-black font-bold rounded-md">
+              <button
+                className="mr-0 md:mr-6 px-4 py-2 md:px-6 btn border-transparent border border-solid md:border-black font-bold rounded-md"
+                onClick={handleOnClick}
+              >
                 Preview
               </button>
             </div>

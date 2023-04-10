@@ -1,4 +1,4 @@
-import { LayerType } from "../contants/design";
+import { LayerType } from "../constants/design";
 
 export type LayerProps = ImageLayerProps | TextLayerProps;
 

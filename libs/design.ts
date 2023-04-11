@@ -9,11 +9,6 @@ export const processHtmlDesign = (layers: LayerProps[]) => {
   //tạo designArea mới
   const designArea = elCloned.querySelector("#design-content") as HTMLElement;
 
-  // const ratio = DesignSize.Size4x6.w / DesignSize.Size4x6.displayW;
-
-  // designArea.style.width = `${DesignSize.Size4x6.displayW}px`;
-  // designArea.style.height = `${DesignSize.Size4x6.displayH}px`;
-  // designArea.style.transform = `scale(${ratio},${ratio})`;
   designArea.style.transformOrigin = "0 0";
 
   designArea.querySelectorAll("div").forEach((item) => {

@@ -27,19 +27,13 @@ handler.post(async (req, res) => {
     });
     await page.setContent(body);
     const content = await page.$("#design-content");
-    console.log("🚀 ~ file: test.ts:31 ~ handler.post ~ content:", content);
 
     const imageBuffer = await content!.screenshot({});
-    console.log(
-      "🚀 ~ file: test.ts:34 ~ handler.post ~ imageBuffer:",
-      imageBuffer
-    );
 
     await page.close();
     await browser.close();
     const path = `${SourcePath.TEMP}/${randID()}`;
     const url = await uploadImageServerSide(imageBuffer as Buffer, path);
-    console.log("🚀 ~ file: design.ts:48 ~ handler.post ~ url:", url);
 
     return res.status(201).json("url");
   } catch (error: any) {

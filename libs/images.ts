@@ -15,7 +15,6 @@ export const uploadImageThumb = async (
 ): Promise<IThumb> => {
   const { originalFilename, filepath } = file;
   const { width, height } = await sharp(filepath).metadata();
-  // if (!width || !height) return;
   const ratio = Number(width) / Number(height);
   const newWidth = ratio > 1 ? ratio * 512 : 512;
   const newHeight = ratio > 1 ? 512 : 512 / ratio;

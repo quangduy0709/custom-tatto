@@ -3,9 +3,10 @@ import { useState } from "react";
 import CustomDropzone from "../../../../components/CustomDropzone";
 import { useUploadForm } from "../../../../hooks/useUploadFileProgress";
 import { randID } from "../../../../utils";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addLayer } from "../../../../redux/reducers/design";
 import { LayerType } from "../../../../constants/design";
+import { RootState } from "../../../../redux";
 
 interface IImages {
   id: string;
@@ -21,6 +22,7 @@ const Upload = () => {
   const [loading, setLoading] = useState(false);
   const { uploadForm, progress } = useUploadForm("/api/upload");
   const dispatch = useDispatch();
+  const { size } = useSelector((state: RootState) => state.design);
 
   const handleUploadImage = async (acceptedFiles: File[]) => {
     try {
@@ -57,14 +59,22 @@ const Upload = () => {
 
   const handleAddImage = (image: IImages) => {
     const id = randID();
+
+    const ratio = image.width / image.height;
+    const _height = size.height < image.height ? size.height : image.height;
+    const _width = _height * ratio;
+
+    const newX = Math.abs(Math.floor((size.width - _width) / 2));
+    const newY = Math.abs(Math.floor((size.height - _height) / 2));
+
     dispatch(
       addLayer({
         id: id,
         type: LayerType.IMAGE,
-        x: 300,
-        y: 300,
-        width: image.width,
-        height: image.height,
+        x: newX,
+        y: newY,
+        width: _width,
+        height: _height,
         url: image.url,
         rotate: 0,
       })

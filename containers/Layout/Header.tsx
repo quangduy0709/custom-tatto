@@ -1,6 +1,6 @@
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux";
+import Button from "../../components/Button";
+import SizeModal from "../SizeModal";
 
 const Header = () => {
   return (
@@ -47,13 +47,9 @@ const Header = () => {
                     className=" bg-white border px-3 py-2 block w-full rounded-md sm:text-sm sm:leading-5 border-gray-200  cursor-pointer"
                   />
                 </div>
-                <button className="md:hidden lg:block mr-2 md:mr-6 px-4 py-2 md:px-6  border border-solid md:border-black rounded-md font-bold">
-                  <span className="hidden lg:block">Size: 4x4 inches</span>
-                </button>
+                <SizeModal />
               </div>
-              <button className="mr-0 md:mr-6 px-4 py-2 md:px-6 btn border-transparent border border-solid md:border-black font-bold rounded-md">
-                Preview
-              </button>
+              <Button color="white">Preview</Button>
             </div>
           </div>
         </nav>

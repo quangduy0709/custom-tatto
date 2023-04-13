@@ -20,3 +20,13 @@ export interface TextLayerProps extends BaseLayerProps {
   type: LayerType.TEXT;
   content: string;
 }
+
+export interface SizeProps {
+  width: number;
+  height: number;
+  scale: number;
+  scaleX: number;
+  scaleY: number;
+  type: PrintSize;
+  value: string;
+}

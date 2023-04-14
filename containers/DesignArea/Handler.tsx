@@ -42,6 +42,7 @@ const Handler = () => {
       onDrag={onDrag}
       onResize={onResize}
       onRotate={onRotate}
+      pinchable={["rotatable", "resizable"]}
     />
   ) : null;
 };

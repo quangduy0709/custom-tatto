@@ -1,0 +1,35 @@
+.btn-white {
+  @apply mr-0 md:mr-6 px-4 py-2 md:px-6 border-transparent border border-solid md:border-black font-bold rounded-md hover:bg-slate-200 transition-all duration-300 !important;
+}
+
+.btn-primary {
+  @apply mr-0 md:mr-6 px-4 py-2 md:px-6 bg-black text-white border border-solid md:border-black font-bold rounded-md hover:opacity-50 !important;
+}
+
+.btn-red {
+  @apply inline-flex justify-center rounded-md border border-transparent bg-red-600  text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 hover:bg-red-700 !important;
+}
+
+.btn-disable {
+  @apply bg-slate-400 hover:bg-slate-400 !important;
+}
+
+.btn-xs {
+  @apply px-2 py-1 text-xs !important;
+}
+
+.btn-sm {
+  @apply px-3 py-2 text-sm font-medium leading-4 !important;
+}
+
+.btn-md {
+  @apply px-4 py-2 text-sm font-medium !important;
+}
+
+.btn-xl {
+  @apply px-4 py-2 text-base font-medium !important;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-base font-medium !important;
+}

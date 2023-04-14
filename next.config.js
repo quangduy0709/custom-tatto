@@ -1,21 +1,9 @@
 /** @type {import('next').NextConfig} */
-
-const STORAGE_URL = process.env.CLIENT_STORAGE_DOMAIN || "";
-const envVariables = Object.keys(process.env).reduce((prev, next) => {
-  if (next.startsWith("CLIENT_")) {
-    return {
-      ...prev,
-      [next]: process.env[next],
-    };
-  }
-  return prev;
-}, {});
-
+const STORAGE_URL = process.env.NEXT_PUBLIC_STORAGE_DOMAIN || "";
 const nextConfig = {
-  reactStrictMode: true,
-  env: envVariables,
+  reactStrictMode: false,
+  swcMinify: true,
   async rewrites() {
-    const STORAGE_URL = process.env.CLIENT_STORAGE_DOMAIN || "";
     return [
       {
         source: "/images/:slug*",

@@ -1,16 +1,8 @@
 import { GiHamburgerMenu } from "react-icons/gi";
-import req from "../../libs/req";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux";
-import { processHtmlDesign } from "../../libs/design";
-import axios from "axios";
+import Button from "../../components/Button";
+import SizeModal from "../SizeModal";
 
 const Header = () => {
-  const { layers } = useSelector((state: RootState) => state.design);
-  const handleOnClick = async () => {
-    const html = processHtmlDesign(layers);
-    const { data } = await req.post("/test", JSON.stringify(html[0].html));
-  };
   return (
     <header id="header" className="sticky top-0 z-[900] w-full shadow-xl">
       <div>
@@ -55,16 +47,9 @@ const Header = () => {
                     className=" bg-white border px-3 py-2 block w-full rounded-md sm:text-sm sm:leading-5 border-gray-200  cursor-pointer"
                   />
                 </div>
-                <button className="md:hidden lg:block mr-2 md:mr-6 px-4 py-2 md:px-6  border border-solid md:border-black rounded-md font-bold">
-                  <span className="hidden lg:block">Size: 4x4 inches</span>
-                </button>
+                <SizeModal />
               </div>
-              <button
-                className="mr-0 md:mr-6 px-4 py-2 md:px-6 btn border-transparent border border-solid md:border-black font-bold rounded-md"
-                onClick={handleOnClick}
-              >
-                Preview
-              </button>
+              <Button color="white">Preview</Button>
             </div>
           </div>
         </nav>

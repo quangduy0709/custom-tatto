@@ -33,8 +33,9 @@ model Design {
   layers       Layer[]
   createdAt    DateTime @default(now()) @map("created_at")
   previewUrl   String   @map("preview_url")
-  previewImage String   @map("preview_image") 
+  previewImage String   @map("preview_image")
   bulePrintUrl String   @map("blue_print_url")
+  size         String
 
   @@map("design")
 }

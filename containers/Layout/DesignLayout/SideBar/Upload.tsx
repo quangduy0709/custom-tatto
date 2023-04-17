@@ -85,7 +85,7 @@ const Upload = ({ onClose }: { onClose: () => void }) => {
         type: LayerType.IMAGE,
         x: newX,
         y: newY,
-        width: height,
+        width: width,
         height: height,
         url: image.url,
         rotate: 0,

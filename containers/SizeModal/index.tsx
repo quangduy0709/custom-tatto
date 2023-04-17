@@ -13,18 +13,18 @@ const SizeModal = () => {
 
   const sizeOpts = [
     {
-      width: 500,
-      height: 500,
+      width: 192,
+      height: 192,
       image:
         "https://inkboxdesigns.imgix.net/website/custom/size-selector/2x2_stencil_cropped.jpg?w=240&dpr=2",
       subImage:
-        "https://inkboxdesigns.imgix.net/website/custom/size-selector/3x3_photo.jpg?w=240&amp;dpr=2",
+        "https://inkboxdesigns.imgix.net/website/custom/size-selector/2x2_stencil_cropped.jpg?w=240&dpr=2",
       type: PrintSize.SMALL,
       value: '2" x 2"',
     },
     {
-      width: 850,
-      height: 850,
+      width: 288,
+      height: 288,
       image:
         "	https://inkboxdesigns.imgix.net/website/custom/size-selector/3x3_stencil_cropped.jpg?w=240&dpr=2",
       subImage:
@@ -33,14 +33,24 @@ const SizeModal = () => {
       value: '3" x 3"',
     },
     {
-      width: 1675,
-      height: 450,
+      width: 384,
+      height: 384,
       image:
-        "https://inkboxdesigns.imgix.net/website/custom/size-selector/5x2_stencil_cropped.jpg?w=240&dpr=2",
+        "https://inkboxdesigns.imgix.net/website/custom/size-selector/4x4_stencil_cropped.jpg?w=240&dpr=2",
       subImage:
         "https://inkboxdesigns.imgix.net/website/custom/size-selector/3x3_photo.jpg?w=240&amp;dpr=2",
       type: PrintSize.LARGE,
       value: '4" x 4"',
+    },
+    {
+      width: 480,
+      height: 192,
+      image:
+        "https://inkboxdesigns.imgix.net/website/custom/size-selector/5x2_stencil_cropped.jpg?w=240&dpr=2",
+      subImage:
+        "https://inkboxdesigns.imgix.net/website/custom/size-selector/3x3_photo.jpg?w=240&amp;dpr=2",
+      type: PrintSize.WIDE,
+      value: '5" x 2"',
     },
   ];
 
@@ -98,7 +108,7 @@ const SizeModal = () => {
                       href="#"
                       className="flex flex-col justify-center items-center cursor-pointer relative rounded"
                     >
-                      <div className=" relative border border-brand-black p-2 flex justify-center items-center rounded">
+                      <div className=" relative border p-2 flex justify-center items-center rounded">
                         <div className="absolute w-full h-full top-0 p-1.5 pointer-events-none">
                           <div className="w-full h-full rounded border border-dashed"></div>
                         </div>

@@ -17,7 +17,7 @@ interface IImages {
 
 type IThumb = Omit<IImages, "id">;
 
-const Upload = () => {
+const Upload = ({ onClose }: { onClose: () => void }) => {
   const [images, setImages] = useState<IImages[]>([]);
   const [loading, setLoading] = useState(false);
   const { uploadForm, progress } = useUploadForm("/api/upload");
@@ -79,6 +79,7 @@ const Upload = () => {
         rotate: 0,
       })
     );
+    onClose();
   };
 
   return (

@@ -59,7 +59,7 @@ const Sidebar = () => {
   }, [choice]);
 
   return (
-    <div className="w-full md:w-auto flex flex-col md:flex-row-reverse absolute md:relative z-10">
+    <div className="w-full md:w-auto flex flex-col md:flex-row-reverse md:relative z-10">
       <div className={`dl-sidebar-drawer flex-1 shadow-xl`}>
         {open && <ButtonCloseDrawer onClick={() => setOpen(false)} />}
 
@@ -87,7 +87,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="w-full md:w-auto overflow-hidden fixed bottom-0 md:relative z-50 bg-[#212121]  text-white ">
+      <div className="w-full md:w-auto overflow-hidden md:relative z-50 bg-[#212121]  text-white ">
         <div className="w-full md:w-20 max-w-md h-full m-auto relative flex flex-row md:flex-col items-center text-xs font-bold p-0 md:pb-6 gap-7 justify-center md:justify-start">
           {sideBarMenu.map((item) => {
             return (

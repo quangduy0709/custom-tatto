@@ -32,3 +32,15 @@
   display: block !important;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
+
+.moveable-bold,
+.moveable-target,
+.moveable-vertical {
+  background-color: blue !important;
+}
+
+.moveable-dashed {
+  border: solid 1px !important;
+  opacity: 1 !important;
+  border-color: blue !important;
+}

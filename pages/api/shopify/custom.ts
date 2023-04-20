@@ -16,7 +16,7 @@ export default async function handler(
     }
   });
   </script>
-  <iframe class="w-full h-[88vh]" src="https://3284-222-252-30-163.ngrok-free.app/"></iframe>
+  <iframe class="w-full h-[88vh]" src="https://custom-tatto.vercel.app/"></iframe>
   <form action="/cart/add" method="post" id="form">
   <input type="hidden" name="id" value="44670232199458" />
   <input type="hidden" name="Color" value="Silver" />

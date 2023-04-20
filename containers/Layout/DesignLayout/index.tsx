@@ -1,11 +1,15 @@
+import Header from "../Header";
 import Content from "./Content";
-import Sidebar from "./Sidebar";
+import Sidebar from "./SideBar";
 
 const DesignLayout = () => {
   return (
-    <div className="design-layout flex">
-      <Sidebar />
-      <Content />
+    <div className="flex flex-col">
+      <Header />
+      <div className="flex design-layout h-[calc(100vh-64px)] md:h-[calc(100vh-79px)]  flex-col-reverse md:flex-row">
+        <Sidebar />
+        <Content />
+      </div>
     </div>
   );
 };

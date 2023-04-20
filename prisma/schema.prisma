@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LayerType {
+  IMAGE
+  TEXT
+}
+
+model Layer {
+  id        Int       @id @default(autoincrement())
+  type      LayerType
+  config    Json      @default("{}")
+  createdAt DateTime  @default(now()) @map("created_at")
+  designId  Int
+  design    Design    @relation(fields: [designId], references: [id], onDelete: Cascade)
+
+  @@map("leyer")
+}
+
+model Design {
+  id           Int      @id @default(autoincrement())
+  name         String?
+  html         String
+  layers       Layer[]
+  createdAt    DateTime @default(now()) @map("created_at")
+  previewUrl   String   @map("preview_url")
+  previewImage String   @map("preview_image")
+  bulePrintUrl String   @map("blue_print_url")
+  size         String
+
+  @@map("design")
+}

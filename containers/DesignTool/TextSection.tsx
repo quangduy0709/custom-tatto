@@ -1,6 +1,5 @@
-import Image from "next/image";
 import { useDispatch } from "react-redux";
-import { LayerType } from "../../contants/design";
+import { LayerType } from "../../constants/design";
 import { TextLayerProps } from "../../interfaces/design";
 import { addLayer } from "../../redux/reducers/design";
 

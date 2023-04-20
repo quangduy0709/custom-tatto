@@ -17,7 +17,7 @@ interface IImages {
 
 type IThumb = Omit<IImages, "id">;
 
-const Upload = () => {
+const Upload = ({ onClose }: { onClose: () => void }) => {
   const [images, setImages] = useState<IImages[]>([]);
   const [loading, setLoading] = useState(false);
   const { uploadForm, progress } = useUploadForm("/api/upload");
@@ -59,13 +59,25 @@ const Upload = () => {
 
   const handleAddImage = (image: IImages) => {
     const id = randID();
+    const originSize = {
+      width: size.scale * size.width,
+      height: size.scale * size.height,
+    };
 
     const ratio = image.width / image.height;
-    const _height = size.height < image.height ? size.height : image.height;
-    const _width = _height * ratio;
+    let width = 0;
+    let height = 0;
 
-    const newX = Math.abs(Math.floor((size.width - _width) / 2));
-    const newY = Math.abs(Math.floor((size.height - _height) / 2));
+    if (ratio > originSize.width / originSize.height) {
+      width = originSize.width;
+      height = width / ratio;
+    } else {
+      height = originSize.height;
+      width = height * ratio;
+    }
+
+    const newX = Math.abs(Math.floor((originSize.width - width) / 2));
+    const newY = Math.abs(Math.floor((originSize.height - height) / 2));
 
     dispatch(
       addLayer({
@@ -73,12 +85,13 @@ const Upload = () => {
         type: LayerType.IMAGE,
         x: newX,
         y: newY,
-        width: _width,
-        height: _height,
+        width: width,
+        height: height,
         url: image.url,
         rotate: 0,
       })
     );
+    onClose();
   };
 
   return (

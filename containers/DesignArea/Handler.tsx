@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux";
 
 const Handler = () => {
-  const { selected } = useSelector((state: RootState) => state.design);
+  const { selected, layers } = useSelector((state: RootState) => state.design);
 
   const onDrag = (e: OnDrag) => {
     const target = document.getElementById(selected[0]);

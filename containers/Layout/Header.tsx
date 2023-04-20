@@ -1,8 +1,16 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import Button from "../../components/Button";
 import SizeModal from "../SizeModal";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux";
 
 const Header = () => {
+  const { layers, size } = useSelector((state: RootState) => state.design);
+  const handleAddToCart = () => {
+    const data = { size: size, layers: layers };
+    window.parent.postMessage({ type: "submitForm", data: data }, "*");
+  };
+
   return (
     <header id="header" className="sticky top-0 z-[900] w-full shadow-xl">
       <div>
@@ -50,6 +58,9 @@ const Header = () => {
                 <SizeModal />
               </div>
               <Button color="white">Preview</Button>
+              <Button id="addToCart" color="primary" onClick={handleAddToCart}>
+                Add to card
+              </Button>
             </div>
           </div>
         </nav>

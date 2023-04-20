@@ -6,6 +6,7 @@ import { MdOutlineUploadFile } from "react-icons/md";
 import { RxText } from "react-icons/rx";
 import Upload from "./Upload";
 import TextSection from "../../../DesignTool/TextSection";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -47,7 +48,7 @@ const Sidebar = () => {
       case "designs":
         return <></>;
       case "upload":
-        return <Upload />;
+        return <Upload onClose={() => setOpen(false)} />;
       case "text":
         return <TextSection />;
       case "layers":
@@ -58,22 +59,35 @@ const Sidebar = () => {
   }, [choice]);
 
   return (
-    <div className="w-full md:w-auto flex flex-col md:flex-row-reverse absolute md:relative z-10">
-      <div
-        className={`dl-sidebar-drawer flex-1 shadow-xl z-50 md:bg-white bg-gray-400`}
-      >
+    <div className="w-full md:w-auto flex flex-col md:flex-row-reverse md:relative z-10">
+      <div className={`dl-sidebar-drawer flex-1 shadow-xl`}>
         {open && <ButtonCloseDrawer onClick={() => setOpen(false)} />}
 
         <div
-          className={`content overflow-hidden transition-all duration-300 ${
-            open ? "md:w-[300px] h-[300px] " : "w-0 h-0"
+          className={`content overflow-hidden transition-all duration-300 relative z-50 ${
+            open ? "md:w-[300px] h-[70vh]" : "md:w-0 h-0"
           }`}
         >
-          {renderContent}
+          <AiOutlineClose
+            className="absolute top-2 right-2 md:hidden w-4 h-4"
+            onClick={() => setOpen(false)}
+          />
+
+          {open && (
+            <div
+              className={
+                "w-screen h-screen fixed cursor-pointer top-0 left-0 md:hidden -z-10"
+              }
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.3)",
+              }}
+            />
+          )}
+          <div className="bg-white w-full h-full pt-6">{renderContent}</div>
         </div>
       </div>
 
-      <div className="w-full md:w-auto overflow-hidden relative z-50 bg-[#212121]  text-white">
+      <div className="w-full md:w-auto overflow-hidden md:relative z-50 bg-[#212121]  text-white ">
         <div className="w-full md:w-20 max-w-md h-full m-auto relative flex flex-row md:flex-col items-center text-xs font-bold p-0 md:pb-6 gap-7 justify-center md:justify-start">
           {sideBarMenu.map((item) => {
             return (
@@ -102,7 +116,7 @@ export default Sidebar;
 const ButtonCloseDrawer = ({ onClick }: { onClick: () => void }) => {
   return (
     <div
-      className="flex items-center justify-center md:absolute md:top-1/2 md:-translate-y-1/2 md:-right-[20px] cursor-pointer z-[999]"
+      className="absolute top-1/2 -translate-y-1/2 -right-[20px] cursor-pointer"
       onClick={onClick}
     >
       <div className="relative hidden md:block">
@@ -158,10 +172,6 @@ const ButtonCloseDrawer = ({ onClick }: { onClick: () => void }) => {
         <ChevronLeftIcon
           className={`w-4 h-4 absolute top-1/2 -translate-y-1/2`}
         />
-      </div>
-
-      <div className="tab p-2 block md:sr-only">
-        <div className="h-1 w-[50px] rounded-sm bg-white"></div>
       </div>
     </div>
   );

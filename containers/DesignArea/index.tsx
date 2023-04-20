@@ -21,9 +21,7 @@ const DesignArea = () => {
     const scaleX = refPar.current.offsetWidth / size.width;
     const scaleY = refPar.current.offsetHeight / size.height;
 
-    // luôn giữ tỉ lệ kích thước không lớn hơn tỉ lệ ban đầu
-    const _scale = scaleX > scaleY ? scaleY : scaleX;
-    const scale = _scale > 1 ? 1 : _scale;
+    const scale = scaleX > scaleY ? scaleY : scaleX;
 
     dispatch(updateSize({ scaleX, scaleY, scale }));
 
@@ -37,7 +35,8 @@ const DesignArea = () => {
     );
 
     if (ref.current) {
-      ref.current.style.transform = `scale(${scale})`;
+      ref.current.style.width = `${scale * size.width}px`;
+      ref.current.style.height = `${scale * size.height}px`;
       ref.current.style.left = `${newLeftPos}px`;
       ref.current.style.top = `${newTopPos}px`;
     }
@@ -58,10 +57,11 @@ const DesignArea = () => {
         ref={ref}
         style={{
           transformOrigin: "top left",
-          width: size.width,
-          height: size.height,
         }}
       >
+        <div className="absolute w-full h-full top-0 p-2 pointer-events-none">
+          <div className="w-full h-full rounded border border-dashed border-red-300"></div>
+        </div>
         <Handler />
 
         {layers.map((layer) =>

@@ -7,12 +7,19 @@ export default async function handler(
   res.setHeader("Content-type", "application/liquid");
   res.send(`
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="{{ 'custom-product-form.js' | asset_url }}" defer="defer"></script>
-  <iframe class="w-full p-4" style="height:85vh" src="https://custom-tatto.vercel.app/"></iframe>
-  <form action="/cart/add" method="post">
+  <script>
+  window.addEventListener('message', function(event) {
+    if (event.data.type === 'submitForm') {
+      var formData = event.data.data;
+      var form = document.getElementById('form');
+      form.submit();    
+    }
+  });
+  </script>
+  <iframe class="w-full h-[88vh]" src="https://3284-222-252-30-163.ngrok-free.app/"></iframe>
+  <form action="/cart/add" method="post" id="form">
   <input type="hidden" name="id" value="44670232199458" />
   <input type="hidden" name="Color" value="Silver" />
   <input type="hidden" name="quantity" value="1" />
-  <button type="submit" class="mr-0 md:mr-6 px-4 py-2 md:px-6 btn border-transparent border border-solid md:border-black font-bold rounded-md">Add to cart </button>
 </form>`);
 }

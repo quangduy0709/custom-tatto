@@ -3,11 +3,12 @@ import Button from "../../components/Button";
 import SizeModal from "../SizeModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux";
+import { randID } from "../../utils";
 
 const Header = () => {
   const { layers, size } = useSelector((state: RootState) => state.design);
   const handleAddToCart = () => {
-    const data = { size: size, layers: layers };
+    const data = { size: size, layers: layers, customizedId: randID() };
     window.parent.postMessage({ type: "submitForm", data: data }, "*");
   };
 

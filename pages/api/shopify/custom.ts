@@ -10,8 +10,10 @@ export default async function handler(
   <script>
   window.addEventListener('message', function(event) {
     if (event.data.type === 'submitForm') {
-      var formData = event.data.data;
+      var formData = event.data.data;   
       var form = document.getElementById('form');
+      var customizedId =  document.getElementById('customized_id');
+      customizedId.value = formData.customizedId;
       form.submit();    
     }
   });
@@ -21,5 +23,6 @@ export default async function handler(
   <input type="hidden" name="id" value="44670232199458" />
   <input type="hidden" name="Color" value="Silver" />
   <input type="hidden" name="quantity" value="1" />
+  <input type="hidden" name="properties[Customize Id]" value="1" id="customized_id" />
 </form>`);
 }

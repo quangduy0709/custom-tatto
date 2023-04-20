@@ -59,7 +59,7 @@ const Sidebar = () => {
   }, [choice]);
 
   return (
-    <div className="w-full md:w-auto flex flex-col md:flex-row-reverse md:relative z-10">
+    <div className="w-full md:w-auto flex flex-col md:flex-row-reverse md:relative z-10 absolute">
       <div className={`dl-sidebar-drawer flex-1 shadow-xl`}>
         {open && <ButtonCloseDrawer onClick={() => setOpen(false)} />}
 

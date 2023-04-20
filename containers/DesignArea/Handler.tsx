@@ -44,6 +44,7 @@ const Handler = () => {
       onDrag={onDrag}
       onResize={onResize}
       onRotate={onRotate}
+<<<<<<< HEAD
       pinchable={["resizable", "rotatable"]}
       snappable={true}
       isDisplaySnapDigit={true}
@@ -68,6 +69,9 @@ const Handler = () => {
       elementGuidelines={layers.map((item) => ({
         element: `#${item.id}`,
       }))}
+=======
+      pinchable={["rotatable", "resizable"]}
+>>>>>>> origin/main
     />
   ) : null;
 };

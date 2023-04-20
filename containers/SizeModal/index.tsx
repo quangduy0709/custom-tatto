@@ -72,12 +72,12 @@ const SizeModal = () => {
         className="md:hidden lg:block mr-2 md:mr-6 px-4 py-2 md:px-6  border border-solid md:border-black rounded-md font-bold"
         onClick={onOpenModal}
       >
-        <span className="hidden lg:block">Size: {size.value}</span>
+        <span className=" lg:block">Size: {size.value}</span>
       </button>
       <Modal
         onCancel={onCancelModal}
         visible={open}
-        subClassName="min-w-[800px]"
+        subClassName="md:min-w-[800px]"
       >
         <div className="flex flex-col relative items-center pb-20 sm:pb-8 h-full overflow-x-hidden overflow-y-auto flex-1">
           <div className="text-center p-6">

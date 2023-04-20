@@ -42,7 +42,7 @@ const Header = () => {
               </a>
             </div>
           </div>
-          <div className="relative flex-1 hidden md:block">
+          <div className="relative flex-1">
             <div className="pl-2 md:p-4 flex items-center justify-start md:justify-between p-2 overflow-hidden">
               <div className="flex flex-1 justify-end md:justify-start items-center">
                 <div className="ml-5 mr-9 hidden md:flex relative items-center cursor-pointer">

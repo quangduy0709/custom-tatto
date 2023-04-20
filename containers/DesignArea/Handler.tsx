@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux";
 
 const Handler = () => {
-  const { selected } = useSelector((state: RootState) => state.design);
+  const { selected, layers } = useSelector((state: RootState) => state.design);
 
   const onDrag = (e: OnDrag) => {
     const target = document.getElementById(selected[0]);
@@ -42,6 +42,30 @@ const Handler = () => {
       onDrag={onDrag}
       onResize={onResize}
       onRotate={onRotate}
+      pinchable={["resizable", "rotatable"]}
+      snappable={true}
+      isDisplaySnapDigit={true}
+      isDisplayInnerSnapDigit={false}
+      snapDirections={{
+        top: true,
+        left: true,
+        bottom: true,
+        right: true,
+        center: true,
+        middle: true,
+      }}
+      elementSnapDirections={{
+        top: true,
+        left: true,
+        bottom: true,
+        right: true,
+        center: true,
+        middle: true,
+      }}
+      snapThreshold={5}
+      elementGuidelines={layers.map((item) => ({
+        element: `#${item.id}`,
+      }))}
     />
   ) : null;
 };

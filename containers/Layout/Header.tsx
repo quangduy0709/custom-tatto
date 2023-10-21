@@ -4,13 +4,39 @@ import SizeModal from "../SizeModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux";
 import { randID } from "../../utils";
+import axios from "axios";
 
 const Header = () => {
   const { layers, size } = useSelector((state: RootState) => state.design);
-  const handleAddToCart = () => {
-    const data = { size: size, layers: layers, customizedId: randID() };
-    window.parent.postMessage({ type: "submitForm", data: data }, "*");
-  };
+
+  const baseURL = "https://handdnn2icom.wptangtoc-ols.com"; // Đường dẫn đến cửa hàng của bạn
+  const consumerKey = "ck_98ba4f1e83558ff674d93a0d73a843562ab33be8";
+  const consumerSecret = "cs_1749e17653181c484a7e1a21ad057e4ca3c00096";
+  const WooCommerce = axios.create({
+    baseURL: `${baseURL}/wp-json/wc/v3`,
+    auth: {
+      username: consumerKey,
+      password: consumerSecret,
+    },
+  });
+
+  async function handleAddToCart() {
+    try {
+      const response = await WooCommerce.post("/cart/add", {
+        product_id: "38913",
+        quantity: 1,
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Lỗi khi thêm sản phẩm vào giỏ hàng:", error);
+      throw error;
+    }
+  }
+
+  // const handleAddToCart = () => {
+  //   const data = { size: size, layers: layers, customizedId: randID() };
+  //   window.parent.postMessage({ type: "submitForm", data: data }, "*");
+  // };
 
   return (
     <header id="header" className="sticky top-0 z-[900] w-full shadow-xl">
